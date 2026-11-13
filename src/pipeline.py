@@ -59,6 +59,13 @@ ANNUAL_MILEAGE = 13476
 car_pricing["5yr_miles"] = ANNUAL_MILEAGE * 5
 car_pricing["10yr_miles"] = ANNUAL_MILEAGE * 10
 
+car_pricing["mileage"] =np.where(
+    car_pricing["type"] == "electric",
+        car_pricing["electric_mileage"],
+        car_pricing["Mileage Combined Mpg"]
+)
+
+
 car_pricing["5yr_fuel"] = np.where(
     car_pricing["type"] == "electric",
     car_pricing["5yr_miles"] / 
@@ -107,8 +114,23 @@ car_pricing["cylinders"] = (trim.str.extract(r"(\d+)cyl", expand=False))
 car_pricing["turbo"] = (trim.str.contains(r"turbo", case=False, na=False))
 car_pricing["transmission"] = trim.str.extract(r"(\d+\s*[AM]+|CVT|DCT|DSG|AT|MT|Automatic|Manual|DD)", expand=False)
 
-car_pricing.drop(columns=["Trim Description", "Trim MSRP", "Trim Id", "5yr_miles", "10yr_miles", "Trim Name", "Mileage Epa Combined Mpg Electric", "Mileage Epa Kwh 100 Mi Electric", "Mileage Fuel Tank Capacity", "Mileage Combined Mpg", "Mileage Battery Capacity Electric", "electric_mileage","5yr_fuel","10yr_fuel"], inplace=True)
+car_pricing.drop(columns=["Trim Description", "Trim MSRP", "Trim Id", "5yr_miles", "10yr_miles", 
+                          "Trim Name", "Mileage Epa Combined Mpg Electric", "Mileage Epa Kwh 100 Mi Electric", 
+                          "Mileage Fuel Tank Capacity", "Mileage Combined Mpg", "Mileage Battery Capacity Electric", 
+                          "electric_mileage","5yr_fuel","10yr_fuel", "5yr_energy_cost", "10yr_energy_cost"], inplace=True)
 car_pricing.drop_duplicates(inplace=True)
+car_pricing.dropna(subset = ["mileage"])
+
+numeric_features = [
+    "doors",
+    "engine liters",
+    "cylinders"
+]
+for col in numeric_features:
+    car_pricing[col] = pd.to_numeric(
+        car_pricing[col],
+        errors="coerce"
+    )
 
 car_pricing.to_csv(
     "data/car_pricing_final.csv",
