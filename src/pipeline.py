@@ -52,7 +52,7 @@ ANNUAL_MILEAGE = 13476
 car_pricing["5yr_miles"] = ANNUAL_MILEAGE * 5
 car_pricing["10yr_miles"] = ANNUAL_MILEAGE * 10
 
-car_pricing["5yr_gallons_or_kwh"] = np.where(
+car_pricing["5yr_energy_cost"] = np.where(
     car_pricing["type"] == "electric",
     car_pricing["5yr_miles"] / 100 *
         car_pricing["Mileage Epa Kwh 100 Mi Electric"],
@@ -75,9 +75,9 @@ car_pricing["5yr_cost"] = (
     car_pricing["Trim MSRP"] +
     np.where(
         car_pricing["type"] == "electric",
-        car_pricing["5yr_gallons_or_kwh"] *
+        car_pricing["5yr_energy_cost"] *
             US_AVG_ELECTRICITY_PRICE,
-        car_pricing["5yr_gallons_or_kwh"] *
+        car_pricing["5yr_energy_cost"] *
             US_AVG_GAS_PRICE
     )
 )
@@ -102,7 +102,7 @@ car_pricing["cylinders"] = (trim.str.extract(r"(\d+)cyl", expand=False))
 car_pricing["turbo"] = (trim.str.contains(r"turbo", case=False, na=False))
 car_pricing["transmission"] = trim.str.extract(r"(\d+\s*[AM]+|CVT|DCT|DSG|AT|MT|Automatic|Manual)", expand=False)
 
-car_pricing.drop(columns=["Trim Description", "Trim Id", "5yr_miles", "10yr_miles", "5yr_gallons_or_kwh", "10yr_gallons_or_kwh"], inplace=True)
+car_pricing.drop(columns=["Trim Description", "Trim Id", "5yr_miles", "10yr_miles"], inplace=True)
 
 car_pricing.to_csv(
     "data/car_pricing_final.csv",
