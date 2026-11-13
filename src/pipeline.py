@@ -119,7 +119,7 @@ car_pricing.drop(columns=["Trim Description", "Trim MSRP", "Trim Id", "5yr_miles
                           "Mileage Fuel Tank Capacity", "Mileage Combined Mpg", "Mileage Battery Capacity Electric", 
                           "electric_mileage","5yr_fuel","10yr_fuel", "5yr_energy_cost", "10yr_energy_cost"], inplace=True)
 car_pricing.drop_duplicates(inplace=True)
-car_pricing.dropna(subset = ["mileage"])
+car_pricing.dropna(subset=["mileage"], inplace=True)
 
 numeric_features = [
     "doors",
