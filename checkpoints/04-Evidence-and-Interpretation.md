@@ -9,9 +9,11 @@ Add a new, dated entry to the root `README.md` of your team's GitHub repository.
 
 ## Evidence so far
 - **Route C:** Show what the quality checks say about the dataset and what an ML result says about its usefulness for your question. Link both kinds of evidence.
-    -The cleaned dataset contains 11,839 gas vehicles and 777 hybrids. After removing all incomplete rows, the one-clean-observation notebook show no missing values or duplicate rows. Mean EPA combined mileage is about 22.75 MPG for gas vehicle and 34.31 MPG for hybrids. The summaries shown in the notebook just describe the dataset. See [one-clean-observation](https://github.com/lmcnary/Stat_486_Project/blob/main/one-clean-observation.ipynb) and [the cleaning pipeline](https://github.com/lmcnary/Stat_486_Project/tree/main/src) for more details. Our Decision tree Model shows the gas cars have an MAE of about 2.25 MPG and R^2 of about
+    -The cleaned dataset contains 11,839 gas vehicles and 777 hybrids. After removing all incomplete rows, the one-clean-observation notebook show no missing values or duplicate rows. Mean EPA combined mileage is about 22.75 MPG for gas vehicle and 34.31 MPG for hybrids. The summaries shown in the notebook just describe the dataset. See [one-clean-observation](https://github.com/lmcnary/Stat_486_Project/blob/main/one-clean-observation.ipynb) and [the cleaning pipeline](https://github.com/lmcnary/Stat_486_Project/tree/main/src) for more details. Our Decision tree Model shows the gas cars have an MAE of about 2.25 MPG and R^2 of about 0.619. The Decision tree model for the hybrids the MAE was about 2.82MPG and the R^2 score was about 0.843 as shown in [ml-efficiency](https://github.com/lmcnary/Stat_486_Project/blob/main/ml-efficiency.ipynb).
 
 ## Interpretation and next step
 
 - Describe one informative error, failure, tradeoff, or limitation. How does it affect your conclusion?
+-     after dropping the missing values instead of using the simple imputer our accuracy decreased a lot it went from around 0.9 to 0.69.
 - What did the evidence change in your thinking, and what will you test or revise next?
+-     I will test different models and variations to see if we can find a better fit using validation scores. 
