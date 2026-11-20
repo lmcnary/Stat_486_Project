@@ -1,7 +1,6 @@
 
 import pandas as pd
 import numpy as np
-
 from clean import clean_gas_prices, clean_kwh_prices, clean_cars
 
 gas = clean_gas_prices()
@@ -52,6 +51,9 @@ car_pricing["electric_mileage"] = car_pricing["Mileage Epa Combined Mpg Electric
 )
 car_pricing = car_pricing[
     car_pricing["type"] != "diesel"
+]
+car_pricing = car_pricing[
+    car_pricing["type"] != "electric"
 ]
 
 ANNUAL_MILEAGE = 13476
@@ -119,7 +121,9 @@ car_pricing.drop(columns=["Trim Description", "Trim MSRP", "Trim Id", "5yr_miles
                           "Mileage Fuel Tank Capacity", "Mileage Combined Mpg", "Mileage Battery Capacity Electric", 
                           "electric_mileage","5yr_fuel","10yr_fuel", "5yr_energy_cost", "10yr_energy_cost"], inplace=True)
 car_pricing.drop_duplicates(inplace=True)
-car_pricing.dropna(subset=["mileage"], inplace=True)
+
+car_pricing = car_pricing.dropna()
+
 
 numeric_features = [
     "doors",
