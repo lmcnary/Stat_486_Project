@@ -1,6 +1,25 @@
+# Gas and Hybrid Mileage
+### Stats 486 -- Jane Gustafson and Lindsay McNary
+###
+---
+
+## Introduction
+
+**Question**
+
+## Findings?
+
+## Repository Mapping
+
+## Setup and Run Instructions
+
+## Data Access and Sources
+
+## Data Schema
+
 ## Project Development 
 
-| Date | Checkpoint | Required README entry |
+| Date | Checkpoint | README entry |
 | --- | --- | --- |
 | **Oct 20** | Team and directions | Name the team and describe two possible questions, routes, and data sources. Start the repository. If you need help finding a team, contact the instructor. |
 | **Oct 27** | Project plan | Are electric cars worth it? , [data](https://www.fueleconomy.gov/feg/ws/), he baseline would be a gas-powered car of similar model years and vehicle class to the electric car, We will use a matched pairs design with data-quality diagnostics measuring the Mean difference at a 95% confidence interval. |
@@ -10,51 +29,3 @@
 | **Dec 3** | Reproduction draft | Link the code-and-results-complete draft, identify the main result and known gaps, and give exact setup and run commands using the committed `uv` environment files. B teams should link both valid Kaggle submissions and the commands that generated them. |
 | **Dec 8 or 10** | Presentation | Link the presentation materials and state the main findings before your assigned class meeting. Present during that meeting. |
 | **Dec 10** | Final submission | Identify the final commit or tag and link the completed `report.md`, main results, and presentation materials. Submit the repository URL and commit or tag in Canvas by 11:59 PM Mountain Time. |
-
-
-## The final GitHub repository
-
-The repository is the main project artifact. Organize it in a way that fits your work. It should contain:
-
-- a **README** that introduces the question and main finding, maps the repository, and gives exact setup, data-access, and run instructions;
-- the code and configuration used for the main analysis, plus a **reproducible `uv` environment**: commit `pyproject.toml` and `uv.lock`, and state the required Python version in the README or a committed `.python-version` file;
-- saved figures, tables, outputs, or examples to support the report and presentation; and
-- a completed `report.md` based on the [Markdown report template](report-template.md), linked from the repository README, and the presentation materials.
-
-For route C, also include a short description of the dataset's schema, sources, collection date or version, permitted access, cleaning decisions, and quality checks. The repository must contain the scraping or collection scripts used for the reported dataset, even if the raw data cannot be shared. Document the commands that run those scripts and build the cleaned data from accessible inputs; include a shareable data snapshot or small fixture when source terms permit it. The ML run should use the cleaned output produced by this pipeline.
-
-For route B, include the code, configurations, and run commands for **both** pipelines. Link each valid Kaggle submission to the pipeline and commit that produced it, and record its local validation and Kaggle result. A reader should be able to regenerate each submission file from the documented data access steps.
-
-## The written project report
-
-Copy the [report template](report-template.md) into the root of your team's repository as `report.md`, fill it in with your own writing, commit it, and link it from the root README. Submit the completed report in your repository. This is an account of your project experience, not a publication-style technical paper. This is an opportunity to explain your understanding of the project and your outcomes. It is expected that you do **not** use AI for this part, other than for grammatical polishing. Tell readers why you chose the question, the main steps you took, the choices and challenges that shaped the work, and the final outcomes. Explain what worked, what did not, what you learned, and what remains uncertain. Include enough detail and links to code, data, figures, or results for a reader to follow your account, along with each teammate's contributions and your sources. The README carries the exact setup and run instructions, so the report can link to them.
-
-There is **no page or word limit**. Use the length needed to fully describe your project, without padding it with raw logs or a list of every minor experiment. You may adapt the template headings to fit your story as long as the report covers the substance above.
-
-## Verify the environment
-
-Before the December 3 review and again before final submission, **verify the environment from a fresh clone**. Run `uv sync`, then use `uv run` to execute your documented test, small demonstration, or representative-result command. Confirm that it finishes and produces the expected output; record the command and outcome in the corresponding dated README entry. The committed environment files recreate the local `.venv/` directory; do not commit that directory itself. A reader should be able to obtain permitted data and rerun a representative result without hidden notebook state or personal file paths. If the full run is costly, provide a small runnable path and record the configuration and provenance of the full result. Do not commit credentials, restricted data, or unnecessary large files. If data cannot be shared, explain how an authorized reader can access them and provide a small permissible example when possible.
-
-## Presentation and collaboration
-
-Plan for about **12 - 15 minutes** for the presentation. Slides, a live demonstration, or both are welcome. Focus on the question, the choices that mattered, the evidence, and what you learned. Every member should present a meaningful part and be able to discuss the shared project. Have your presentation materials ready for your assigned class meeting and add them to the final repository.
-
-All teammates should make substantive technical or analytical contributions. You may divide tasks, but review each other's work and keep the main decisions understandable to the whole team. Cite datasets, papers, public notebooks, packages, and pretrained models. Follow data licenses and competition rules. If your idea involves collecting new information from people or using private or identifying data, discuss it with the instructor before proceeding.
-
-## AI use
-
-AI tools may help you conceive project ideas, write or debug code, and polish work your team has already created. **Your team must create the final report and presentation slides, including their outlines, interpretation, and conclusions. Do not use AI to generate those deliverables.** I want to hear your own take on what happened in the project. Verify AI-assisted code and claims, and briefly disclose material AI help in `report.md`.
-
-## Grading
-
-The project is worth **100 points**:
-
-| Component | Points |
-| --- | ---: |
-| Checkpoints | 30 |
-| Reproducible workflow | 20 |
-| Presentation | 20 |
-| Written project report | 30 |
-| **Total** | **100** |
-
-The [rubric](rubric.md) explains how these points are judged; the [presentation scoring sheet](presentation-rubric.md) gives the detailed 20-point presentation criteria. The workflow score covers the working code, data-to-result path, and fresh-clone setup. The presentation and report scores reward your team's own account of its choices, evidence, challenges, and outcomes. Quality of reasoning and clear communication matter more than model count, compute spent, or leaderboard position.
